@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Flutter CI/CD
 
 on:
   push:
@@ -32,3 +32,27 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.2'
+
+      - name: Set up Fastlane
+        run: |
+          sudo gem install bundler
+          cd $PROJECT_PATH
+          bundle install
+
+      - name: Deploy to Play Store
+        run: |
+          cd $PROJECT_PATH/android
+          fastlane deploy # You'll need to have Fastlane configured with your Google Play Store credentials
