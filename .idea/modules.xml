@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/test_flutter_workflow.iml" filepath="$PROJECT_DIR$/test_flutter_workflow.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/test_flutter_workflow_android.iml" filepath="$PROJECT_DIR$/android/test_flutter_workflow_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flutterworkflow.iml" filepath="$PROJECT_DIR$/flutterworkflow.iml" />
     </modules>
   </component>
 </project>
