@@ -1,4 +1,4 @@
-com.example.test_flutter_workflow
+com.example.flutterworkflow
 attr activityAction
 attr activityName
 attr alpha

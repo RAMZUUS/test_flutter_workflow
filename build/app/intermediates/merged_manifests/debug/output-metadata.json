@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.example.test_flutter_workflow",
+  "applicationId": "com.example.flutterworkflow",
   "variantName": "debug",
   "elements": [
     {

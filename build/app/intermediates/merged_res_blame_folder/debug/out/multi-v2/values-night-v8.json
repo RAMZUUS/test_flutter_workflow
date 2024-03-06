@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.test_flutter_workflow.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.flutterworkflow.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Ramzi\\IdeaProjects\\test_flutter_workflow\\android\\app\\src\\main\\res\\values-night\\styles.xml",
