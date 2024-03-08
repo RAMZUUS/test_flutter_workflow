@@ -69,6 +69,10 @@ jobs:
       - name: Deploy to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
-          artifacts: build/app/outputs/flutter-apk/app-release.apk
+          serviceAccountJson: ${{ secrets.PLAY_CONSOLE_API_KEY }}
+          packageName: your.package.name  # Replace with your actual package name
+          releaseFile: build/app/outputs/flutter-apk/app-release.apk
           track: production
-          json_key: ${{ secrets.PLAY_CONSOLE_API_KEY }}
+          inAppUpdatePriority: 0
+          status: completed
+          changesNotSentForReview: false
