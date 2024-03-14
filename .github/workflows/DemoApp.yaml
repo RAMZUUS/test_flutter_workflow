@@ -77,7 +77,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: app-release.aab
   release:
     name: Release app to internal track
     needs: [ build ]
