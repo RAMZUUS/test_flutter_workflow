@@ -77,7 +77,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: appbundle
-          path: app-release.aab
+          path: build/app/outputs/bundle/release/app-release.aab
+
   release:
     name: Release app to internal track
     needs: [ build ]
@@ -92,6 +93,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          packageName: com.flutterworkflow
+          packageName: com.fluttercicddemo
           releaseFiles: app-release.aab
           track: internal
