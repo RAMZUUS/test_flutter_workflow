@@ -52,7 +52,7 @@ jobs:
           path: version1.txt
       - name: Update version in YAML
         run: sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
-      - name: List files in android directory  # Add this step to list files in the android directory
+      - name: List files in android directory
         run: ls -l android
       - name: Update KeyStore password in gradle properties
         run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
@@ -95,6 +95,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          packageName: com.fluttercicddemo
+          packageName: com.flutterworkflow
           releaseFiles: app-release.aab
           track: internal
