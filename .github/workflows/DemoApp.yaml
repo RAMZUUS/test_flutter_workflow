@@ -52,8 +52,6 @@ jobs:
           path: version1.txt
       - name: Update version in YAML
         run: sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
-      - name: List files in android directory
-        run: ls -l android
       - name: Update KeyStore password in gradle properties
         run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
       - name: Update KeyStore key password in gradle properties
@@ -72,7 +70,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/app-release.aab"
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.TOKEN_GITHUB }}
           tag: ${{ steps.version.outputs.content }}
           commit: ${{ github.sha }}
       - name: Upload app bundle
@@ -80,7 +78,6 @@ jobs:
         with:
           name: appbundle
           path: build/app/outputs/bundle/release/app-release.aab
-
   release:
     name: Release app to internal track
     needs: [ build ]
@@ -95,6 +92,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          packageName: com.example.flutterworkflow
+          packageName: com.fluttercicddemo
           releaseFiles: app-release.aab
           track: internal
