@@ -3,7 +3,6 @@ name: DemoApp PlayStore Release
 on:
   push:
     branches: [ main ]
-
 jobs:
   version:
     name: Create version number
@@ -51,9 +50,7 @@ jobs:
         with:
           path: version1.txt
       - name: Update version in YAML
-        run: sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
-      - name: List files in android directory
-        run: ls -l android
+        run: sed -i 's/99.99.99+99/{{ steps.version.outputs.content }}+build_number+2/g' pubspec.yaml
       - name: Update KeyStore password in gradle properties
         run: sed -i 's/#{KEYSTORE_PASS}#/${{ secrets.KEYSTORE_PASS }}/g' android/key.properties
       - name: Update KeyStore key password in gradle properties
@@ -72,7 +69,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/app-release.aab"
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.TOKEN_GITHUB }}
           tag: ${{ steps.version.outputs.content }}
           commit: ${{ github.sha }}
       - name: Upload app bundle
@@ -80,7 +77,6 @@ jobs:
         with:
           name: appbundle
           path: build/app/outputs/bundle/release/app-release.aab
-
   release:
     name: Release app to internal track
     needs: [ build ]
@@ -92,10 +88,10 @@ jobs:
         with:
           name: appbundle
       - name: Release app to internal track
-        uses: wzieba/Fastlane-Action@v2
+        uses: r0adkll/upload-google-play@v1
         with:
-          lane: release_internal
-          google_play_track: internal
-          google_play_json_key: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-          package_name: com.app.flutterworkflow
-          release_files: app-release.aab
+          serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
+          packageName: com.flutterworkflow
+          releaseFiles: app-release.aab
+          track: alpha
+          whatsNewDirectory: distribution/whatsnew
