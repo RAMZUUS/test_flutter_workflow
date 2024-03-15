@@ -64,11 +64,12 @@ jobs:
       - run: flutter pub get
       - run: flutter build apk --release --split-per-abi
       - run: flutter build appbundle
-      - name: Create a Release in GitHub
+      - name: Create Release
+        if: steps.check_release.outcome != 'failure'
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/app-release.aab"
-          token: ${{ secrets.TOK }}
+          token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.content }}
           commit: ${{ github.sha }}
       - name: Upload app bundle
