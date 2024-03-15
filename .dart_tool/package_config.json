@@ -164,13 +164,13 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "flutterworkflow",
+      "name": "test_flutter_workflow",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-03-06T10:32:44.209871Z",
+  "generated": "2024-03-15T13:48:26.291268Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }
