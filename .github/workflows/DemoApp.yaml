@@ -90,7 +90,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_ACCOUNT_KEY }}
-          packageName: flutterworkflowtest
+          packageName: com.flutterworkflowtest
           releaseFiles: app-release.aab
           track: alpha
           whatsNewDirectory: distribution/whatsnew
