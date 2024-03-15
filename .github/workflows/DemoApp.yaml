@@ -90,7 +90,7 @@ jobs:
       - name: Release app to internal track
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_ACCOUNT_KEY }}
           packageName: com.flutterworkflow
           releaseFiles: app-release.aab
           track: alpha
